@@ -1,0 +1,4 @@
+-e node_modules/
+.env
+.nova-data/
+dist/
