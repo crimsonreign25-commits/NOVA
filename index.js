@@ -526,7 +526,8 @@ function availableReasoningEngines() {
 }
 
 function cognitiveAnalyze({ goal, memory = [], history = [], workspace }) {
-  const analysis = analyzeGoal(goal);
+  const analyzed = analyzeGoal({ goal, memory, history });
+  const analysis = analyzed.analysis || analyzed;
   const context = selectContext({ goal, memory, history, workspace });
   const routing = routeCapabilities({ analysis, engines: availableReasoningEngines() });
   return { kernel: KERNEL_VERSION, analysis, context, routing };
